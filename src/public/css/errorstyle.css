@@ -1,0 +1,26 @@
+body {
+   padding-top: 4%;
+   font-family: sans-serif;
+}
+
+h1 {
+   color: #3337;
+   text-align: center;
+}
+
+p {
+   color: #888b;
+   display: block;
+   text-align: center;
+}
+
+a {
+   display: block;
+   text-align: center;
+   text-decoration: none;
+   color: #66f;
+}
+
+a:hover {
+   text-decoration: underline #66f;
+}
