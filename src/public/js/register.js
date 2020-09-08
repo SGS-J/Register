@@ -1,31 +1,22 @@
 const fields = document.forms[0].querySelectorAll("input");
-const [userField, emailField, passField] = Array.from(fields);
+const [userField, emailField, passField, confPassField] = Array.from(fields);
+
+const verifyMatchPassword = (e) => {
+  const evt = new Event('invalid', {bubbles: true, cancelable: false, composed: true})
+  if(confPassField.value !== passField.value) {
+    confPassField.dispatchEvent(evt) 
+    e.preventDefault()
+  } 
+}
 
 userField.setAttribute("pattern", "^\\w{3,}");
-userField.addEventListener("invalid", (e) => {
-  e.target.setCustomValidity(
-    "El nombre de usuario debe ser de minimo 3 caracteres"
-  );
-});
+userField.setAttribute('data-errormessage', "El nombre de usuario debe ser de minimo 3 caracteres.")
 
-passField.setAttribute("pattern", "^(?=.{8,}\\d{3,})");
-passField.addEventListener("invalid", (e) => {
-  e.target.setCustomValidity(
-    "La contraseña debe medir minimo 8 caracteres y tener al menos 3 numeros"
-  );
-});
+passField.setAttribute("pattern", "^\\w{8,}");
+passField.setAttribute('data-errormessage', 
+  "La Contraseña debe tener una longitud de mínimo 8 caracteres y contener al menos dos numeros."
+)
 
+confPassField.setAttribute("data-errormessage", "Las contraseñas no coinciden.")
 
-/* ** Removes the validity message on input or focus ** */
-fields.forEach((field) => {
-  field.addEventListener("input", (e) => {
-    e.target.setCustomValidity("");
-  });
-});
-
-fields.forEach((field) => {
-   field.addEventListener("focus", (e) => {
-     e.target.setCustomValidity("");
-   });
- });
- 
+document.forms[0].addEventListener('submit', e => verifyMatchPassword(e))
