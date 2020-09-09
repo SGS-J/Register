@@ -12,10 +12,12 @@ userController.renderSignup = (req, res) => {
 
 userController.registerUser = async (req, res) => {
   const doc = req.body;
+  const emailExisting = await User.findOne({email: doc.email})
   const errors = [];
 
   if (!doc.username || !doc.email || !doc.password) errors.push(1);
   if (doc.password !== doc.confirm_password) errors.push(1);
+  if (emailExisting) errors.push(1)
 
   if (errors.length > 0) {
     res.render("users/signup", { username: doc.username, email: doc.email });
