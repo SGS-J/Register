@@ -3,11 +3,11 @@ const userController = {};
 const User = require("../models/User");
 
 userController.renderSignin = (req, res) => {
-  req.isUnauthenticated() ? res.render("users/signin") : res.redirect("/crud");
+  req.isUnauthenticated() ? res.render("users/signin") : res.redirect("/account/main");
 };
 
 userController.renderSignup = (req, res) => {
-  req.isUnauthenticated() ? res.render("users/signup") : res.redirect("/crud");
+  req.isUnauthenticated() ? res.render("users/signup") : res.redirect("/account/main");
 };
 
 userController.registerUser = async (req, res) => {
