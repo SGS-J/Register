@@ -32,12 +32,7 @@ userController.registerUser = async (req, res) => {
 
 userController.loginUser = passport.authenticate("local", {
   failureRedirect: "/users/signin",
-  successRedirect: "/crud",
+  successRedirect: "/account/main",
 });
-
-userController.logoutUser = (req, res) => {
-  req.logOut();
-  res.redirect("/users/signin");
-};
 
 module.exports = userController;

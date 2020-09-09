@@ -3,7 +3,7 @@ const app = require('./server')
 // Routers
 app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
-app.use('/crud', require('./routes/crud'))
+app.use('/account', require('./routes/account'))
 
 // 404 Error page
 app.use((req, res) => {
