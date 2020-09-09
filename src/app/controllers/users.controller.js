@@ -1,6 +1,7 @@
-const passport = require("passport");
+import passport from "passport";
+import User from "../models/User";
+
 const userController = {};
-const User = require("../models/User");
 
 userController.renderSignin = (req, res) => {
   req.isUnauthenticated() ? res.render("users/signin") : res.redirect("/account/main");
@@ -37,4 +38,5 @@ userController.loginUser = passport.authenticate("local", {
   successRedirect: "/account/main",
 });
 
-module.exports = userController;
+export default userController
+export const {loginUser, registerUser, renderSignin, renderSignup} = userController

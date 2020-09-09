@@ -1,9 +1,9 @@
-const app = require('./server')
+import app from './server'
 
 // Routers
-app.use('/', require('./routes/index'))
-app.use('/users', require('./routes/users'))
-app.use('/account', require('./routes/account'))
+app.use('/', require('./routes/index').default)
+app.use('/users', require('./routes/users').default)
+app.use('/account', require('./routes/account').default)
 
 // 404 Error page
 app.use((req, res) => {

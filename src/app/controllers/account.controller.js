@@ -9,4 +9,5 @@ accountController.logoutUser = (req, res) => {
   res.redirect("/users/signin");
 };
 
-module.exports = accountController
+export default accountController
+export const {logoutUser, renderAccount} = accountController

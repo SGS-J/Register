@@ -1,8 +1,7 @@
-const mongoose = require('../../config/database')
-const {Schema} = require('../../config/database')
-const bcrypt = require('bcrypt')
+import mongoose from '../../config/database'
+import { genSalt, hash, compare } from 'bcrypt'
 
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
    username: {type: String , required: true},
    email: {type: String, required: true},
    password: {type: String , required: true},
@@ -11,14 +10,14 @@ const userSchema = new Schema({
 
 userSchema.pre('save', async function (next) {
    const pass = this.password
-   const salt = await bcrypt.genSalt(10)
-   this.password = await bcrypt.hash(pass, salt)
+   const salt = await genSalt(10)
+   this.password = await hash(pass, salt)
    next()
 })
 
 userSchema.methods.matchPassword = async function (password) {
-   return await bcrypt.compare(password, this.password)
+   return await compare(password, this.password)
 }
 
-module.exports = mongoose.model('User', userSchema)
+export default mongoose.model('User', userSchema)
 

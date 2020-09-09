@@ -1,8 +1,10 @@
-const router = require('express').Router()
-const {checkAuth} = require('../helpers/auth')
-const {renderAccount, logoutUser} = require('../app/controllers/account.controller')
+import {Router} from 'express'
+import checkAuth from '../helpers/auth'
+import { renderAccount, logoutUser } from '../app/controllers/account.controller'
+
+const router = Router()
 
 router.get('/main', checkAuth, renderAccount)
 router.get('/logout', logoutUser)
 
-module.exports = router
+export default router

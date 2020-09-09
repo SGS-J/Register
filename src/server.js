@@ -1,30 +1,30 @@
-const express = require('express')
-const path = require('path')
-const logger = require('morgan')
-const bodyParser = require('body-parser')
-const session = require('express-session')
-const exphbs = require('express-handlebars')
-const passport = require('passport')
+import express from 'express'
+import { join } from 'path'
+import logger from 'morgan'
+import { urlencoded, json } from 'body-parser'
+import session from 'express-session'
+import exphbs from 'express-handlebars'
+import passport from 'passport'
 
 // Initializations
+import './config/passport'
 const server = express()
-require('./config/passport')
 
 // Settings
 server.set('port', process.env.PORT || 3000)
-server.set('views', path.join(__dirname, '/app/views'))
+server.set('views', join(__dirname, '/app/views'))
 server.set('view engine', 'hbs')
 server.engine('hbs', exphbs({
    extname: 'hbs',
    defaultLayout: 'main.hbs',
-   layoutsDir: path.join(__dirname, '/app/views/layouts'),
-   partialsDir: path.join(__dirname, '/app/views/partials')
+   layoutsDir: join(__dirname, '/app/views/layouts'),
+   partialsDir: join(__dirname, '/app/views/partials')
 })) 
    
 // Middlewares
 server.use(logger('dev'))
-server.use(bodyParser.urlencoded({extended: false}))
-server.use(bodyParser.json())
+server.use(urlencoded({extended: false}))
+server.use(json())
 server.use(session({
    secret: 'secret',
    resave: true,
@@ -42,6 +42,6 @@ server.use((req, res, next) => {
 })
 
 // Static files
-server.use(express.static(path.join(__dirname, '/public')))
+server.use(express.static(join(__dirname, '/public')))
 
-module.exports = server
+export default server

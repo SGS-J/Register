@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose';
 
 mongoose.connect('mongodb://localhost/userdata', {
    useNewUrlParser: true,
@@ -11,4 +11,4 @@ mongoose.connect('mongodb://localhost/userdata', {
    console.error(err);
 })
 
-module.exports = mongoose
+export default mongoose
