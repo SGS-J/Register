@@ -1,5 +1,5 @@
-const userController = {};
 const passport = require("passport");
+const userController = {};
 const User = require("../models/User");
 
 userController.renderSignin = (req, res) => {
