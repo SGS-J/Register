@@ -1,6 +1,6 @@
 const userController = {};
-const passport = require('passport')
-const User = require('../models/User')
+const passport = require("passport");
+const User = require("../models/User");
 
 userController.renderSignin = (req, res) => {
   req.isUnauthenticated() ? res.render("users/signin") : res.redirect("/crud");
@@ -31,16 +31,13 @@ userController.registerUser = async (req, res) => {
 };
 
 userController.loginUser = passport.authenticate("local", {
-    failureRedirect: "/users/signin",
-  }),
-  (req, res) => {
-    res.redirect("/crud");
-}   
-
+  failureRedirect: "/users/signin",
+  successRedirect: "/crud",
+});
 
 userController.logoutUser = (req, res) => {
   req.logOut();
   res.redirect("/users/signin");
-}
+};
 
-module.exports = userController
+module.exports = userController;
