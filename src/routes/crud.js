@@ -1,8 +1,7 @@
 const router = require('express').Router()
 const {checkAuth} = require('../helpers/auth')
+const {renderCrud} = require('../app/controllers/crud.controller')
 
-router.get('/', checkAuth, (req, res) => {
-   res.render('crud', {username: req.user.username})
-})
+router.get('/', checkAuth, renderCrud)
 
 module.exports = router

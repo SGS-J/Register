@@ -12,13 +12,13 @@ require('./config/passport')
 
 // Settings
 server.set('port', process.env.PORT || 3000)
-server.set('views', path.join(__dirname, '/views'))
+server.set('views', path.join(__dirname, '/app/views'))
 server.set('view engine', 'hbs')
 server.engine('hbs', exphbs({
    extname: 'hbs',
    defaultLayout: 'main.hbs',
-   layoutsDir: path.join(__dirname, '/views/layouts'),
-   partialsDir: path.join(__dirname, '/views/partials')
+   layoutsDir: path.join(__dirname, '/app/views/layouts'),
+   partialsDir: path.join(__dirname, '/app/views/partials')
 })) 
    
 // Middlewares
