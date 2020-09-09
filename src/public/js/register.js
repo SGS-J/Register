@@ -9,7 +9,7 @@ const verifyMatchPassword = (e) => {
   } 
 }
 
-userField.setAttribute("pattern", "^\\w{3,}");
+userField.setAttribute("pattern", "^.{3,}");
 userField.setAttribute('data-errormessage', "El nombre de usuario debe ser de minimo 3 caracteres.")
 
 passField.setAttribute("pattern", "^\\w{8,}");

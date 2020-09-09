@@ -1,5 +1,7 @@
 body {
-   padding-top: 50px;
+   display: flex;
+   flex-direction: column;
+
    background: #0f0c29;
    /* fallback for old browsers */
    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
@@ -22,11 +24,13 @@ body {
 }
 
 main {
-   padding: 5em;
+   flex: 1 0 auto;
+   align-items: center;
+   padding-top: 7em;
+   min-height: 100vh; 
 }
 
 footer {
-   position: absolute;
-   top: 100%;
-   width: 100%;
+   flex-shrink: 0;
+   padding-top: 20px;
 }
