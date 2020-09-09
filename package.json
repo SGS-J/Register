@@ -7,7 +7,7 @@
     "start": "node src/app.js",
     "dev": "nodemon src/app.js"
   },
-  "author": "Santiago",
+  "author": "SGS-J",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
