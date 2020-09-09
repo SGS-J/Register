@@ -14,7 +14,7 @@ userField.setAttribute('data-errormessage', "El nombre de usuario debe ser de mi
 
 passField.setAttribute("pattern", "^\\w{8,}");
 passField.setAttribute('data-errormessage', 
-  "La Contraseña debe tener una longitud de mínimo 8 caracteres y contener al menos dos numeros."
+  "La Contraseña debe tener una longitud de mínimo 8 caracteres."
 )
 
 confPassField.setAttribute("data-errormessage", "Las contraseñas no coinciden.")
